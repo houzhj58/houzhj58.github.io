@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hello World | Hexo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Hello World | Hexo">
+  <title>Python装饰器详解 | Hexo</title>
+  <meta name="keywords" content=" Python , 装饰器 , 编程 ">
+  <meta name="description" content="Python装饰器详解 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -446,19 +446,38 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Python装饰器详解" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hello World</h1>
+        <h1 class="article-title">Python装饰器详解</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Tech">Tech</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Python</a>
+            
+            <a class="color4">装饰器</a>
+            
+            <a class="color3">编程</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-03-02 20:24:09'>2022-03-02 20:24</time>
+            Created At : <time class="date" title='Updated At: 2022-03-04 20:10:39'>2019-11-15 16:50</time>
         
     </div>
     <div class="article-meta">
@@ -480,7 +499,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 装饰器概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">2.使用普通函数作为函数的装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E7%B1%BB%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">3.使用类作为函数的装饰器</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -496,20 +515,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h2 id="1-装饰器概念"><a href="#1-装饰器概念" class="headerlink" title="1. 装饰器概念"></a>1. 装饰器概念</h2><p>装饰器是Python中很重要的一个概念。使用装饰器可以在被装饰的函数执行前后增加一些必要的功能，使代码看起来更简洁，更Pythonic。</p>
+<h2 id="2-使用普通函数作为函数的装饰器"><a href="#2-使用普通函数作为函数的装饰器" class="headerlink" title="2.使用普通函数作为函数的装饰器"></a>2.使用普通函数作为函数的装饰器</h2><p>首先我们定义个简单的函数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">date</span>(<span class="params">boy, girl</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125; and &#123;&#125; are having a date&quot;</span>.<span class="built_in">format</span>(boy, girl))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>这个函数显示一个boy和一个girl进行约会的函数。</p>
+<p>现在我们想在约会之前，确认双方是不是都有时间，如果有时间的话，就约会，任何一方没时间的话，就取消约会。<br>现在写一个装饰器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">date_deco</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_date_args</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;before date&quot;</span>)</span><br><span class="line">        res = func(*args, **kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;after date&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> get_date_args</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>并在date函数之前加上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@date_deco</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<p>现在就已经用装饰器date_deco装饰上函数date了。<br>在执行date函数的时候，首先会把date函数作为参数，传递到date_deco函数中。这是第一层传递。<br>然后date函数还有参数，所以在date_deco函数中，再写一个函数get_date_args来接收date函数的参数。这是第二层传递。<br>现在在get_date_args函数中，既有了date函数，也有了传递进来的参数，然后就可以自定义date函数执行前后的操作了。</p>
+<h2 id="3-使用类作为函数的装饰器"><a href="#3-使用类作为函数的装饰器" class="headerlink" title="3.使用类作为函数的装饰器"></a>3.使用类作为函数的装饰器</h2><p>不带参数的装饰器 被装饰的函数当做__init__函数的参数，__call__函数返回装饰后的原函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">deco</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, func</span>):</span><br><span class="line">        self.func = func</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;a&gt;&quot;</span> + self.func() + <span class="string">&quot;&lt;/a&gt;&quot;</span></span><br><span class="line"><span class="meta">@deco</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;This is func&quot;</span></span><br></pre></td></tr></table></figure>
+<p>带参数的装饰器, 装饰器的参数传递给__init__函数，被装饰的函数传递给__call__，最后返回被装饰的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">deco</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, deco_arg</span>):</span><br><span class="line">        self.deco_arg = deco_arg</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, func</span>):</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">            <span class="keyword">return</span> self.deco_arg + func() + self.deco_arg</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">        </span><br><span class="line"><span class="meta">@deco</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;This is Func&quot;</span></span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 houzhj58@163.com </span>
     </div>
