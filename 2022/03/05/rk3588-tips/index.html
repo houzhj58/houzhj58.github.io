@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Wayland 零碎知识点整理 | Hexo</title>
+  <title>rk3588 tips | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Wayland 零碎知识点整理 | Hexo">
+  <meta name="description" content="rk3588 tips | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -454,9 +454,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Wayland-零碎知识点整理" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-rk3588-tips" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Wayland 零碎知识点整理</h1>
+        <h1 class="article-title">rk3588 tips</h1>
     
     <div class="article-meta">
         
@@ -466,7 +466,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-03-03 11:54:47'>2022-03-03 11:49</time>
+            Created At : <time class="date" title='Updated At: 2022-03-05 20:35:38'>2022-03-05 20:30</time>
         
     </div>
     <div class="article-meta">
@@ -488,7 +488,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-qt%E5%90%AF%E5%8A%A8client%E6%8C%87%E5%AE%9Awayland%E5%B9%B3%E5%8F%B0"><span class="toc-text">1. qt启动client指定wayland平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-qtCompositor%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%EF%BC%9AQtCompositor-Failed-to-initialize-EGL-display-Could-not-get-EglDisplay-for-window"><span class="toc-text">2. qtCompositor启动报错：QtCompositor: Failed to initialize EGL display. Could not get EglDisplay for window.</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%9A%84%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="toc-text">Linux设置默认的运行模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RK3588%E6%8F%90%E4%BE%9B%E7%9A%84linux%E7%B3%BB%E7%BB%9F%E4%B8%8D%E8%83%BD%E5%88%87%E6%8D%A2%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="toc-text">RK3588提供的linux系统不能切换命令行模式</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -504,11 +504,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-qt启动client指定wayland平台"><a href="#1-qt启动client指定wayland平台" class="headerlink" title="1. qt启动client指定wayland平台"></a>1. qt启动client指定wayland平台</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./qopenglwidget -platform wayland</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/lib/x86_64-linux-gnu/qt5/examples/opengl/cube$ ./cube -platform wayland</span><br></pre></td></tr></table></figure>
+        <h3 id="Linux设置默认的运行模式"><a href="#Linux设置默认的运行模式" class="headerlink" title="Linux设置默认的运行模式"></a>Linux设置默认的运行模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl set-default graphical.target  #设置为图形模式 </span><br><span class="line">systemctl set-default multi-user.target #命令行模式</span><br><span class="line">systemctl isolate multi-user.target   #当前立即进入字符模式</span><br><span class="line">systemctl isolate graphical.target  #当前立即进入图形模式</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-qtCompositor启动报错：QtCompositor-Failed-to-initialize-EGL-display-Could-not-get-EglDisplay-for-window"><a href="#2-qtCompositor启动报错：QtCompositor-Failed-to-initialize-EGL-display-Could-not-get-EglDisplay-for-window" class="headerlink" title="2. qtCompositor启动报错：QtCompositor: Failed to initialize EGL display. Could not get EglDisplay for window."></a>2. qtCompositor启动报错：QtCompositor: Failed to initialize EGL display. Could not get EglDisplay for window.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QT_XCB_GL_INTEGRATION=xcb_egl ./qwindow-compositor</span><br></pre></td></tr></table></figure>
-
+<h3 id="RK3588提供的linux系统不能切换命令行模式"><a href="#RK3588提供的linux系统不能切换命令行模式" class="headerlink" title="RK3588提供的linux系统不能切换命令行模式"></a>RK3588提供的linux系统不能切换命令行模式</h3><p>当使用Ctrl+Alt+F1键切换到命令行模式时鼠标消失，但是画面依然卡在刚才的图形界面。Ctrl+Alt+F7返回图形界面时，鼠标出现，画面明显刷新一下。<br>解决，问题出现在FrameBuffer上面，Linux内核并没有打开FrameBuffer Console。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 houzhj58@163.com </span>
