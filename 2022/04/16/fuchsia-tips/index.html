@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>linux arm cross compile | Hexo</title>
+  <title>fuchsia tips | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="linux arm cross compile | Hexo">
+  <meta name="description" content="fuchsia tips | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
@@ -462,9 +462,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-linux-arm-cross-compile" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-fuchsia-tips" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">linux arm cross compile</h1>
+        <h1 class="article-title">fuchsia tips</h1>
     
     <div class="article-meta">
         
@@ -474,7 +474,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-03-10 14:39:02'>2022-03-04 16:49</time>
+            Created At : <time class="date" title='Updated At: 2022-04-16 16:09:26'>2022-04-16 16:07</time>
         
     </div>
     <div class="article-meta">
@@ -496,7 +496,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87sshfs%E5%B0%86arm%E7%9A%84root%E7%8E%AF%E5%A2%83%E6%98%A0%E5%B0%84%E5%88%B0%E7%BC%96%E8%AF%91%E4%B8%BB%E6%9C%BA%E4%B8%8A"><span class="toc-text">通过sshfs将arm的root环境映射到编译主机上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E6%88%90%E5%8A%9F%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%9C%A8%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E6%97%B6%EF%BC%8C%E6%B7%BB%E5%8A%A0sysroot%EF%BC%8C%E6%9D%A5%E6%94%B9%E5%8F%98%E5%8A%A8%E6%80%81%E5%BA%93%E6%90%9C%E7%B4%A2%E8%B7%AF%E5%BE%84"><span class="toc-text">映射成功之后，在交叉编译时，添加sysroot，来改变动态库搜索路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E4%BB%A5%E4%B8%8B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%9F%A5%E7%9C%8B%E6%9B%B4%E6%94%B9%E5%90%8E%EF%BC%8C%E5%8A%A8%E6%80%81%E5%BA%93%E7%9A%84%E6%90%9C%E7%B4%A2%E8%B7%AF%E5%BE%84"><span class="toc-text">可以通过以下命令来查看更改后，动态库的搜索路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E8%BF%9B%E8%A1%8C%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E6%97%B6%EF%BC%8C%E4%BB%8D%E9%9C%80%E8%A6%81%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0%E2%80%9C-I%E2%80%9D%EF%BC%8C%E6%88%96%E8%80%85%E5%8F%AF%E4%BB%A5%E5%B0%86%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9B%B4%E6%8E%A5%E6%B7%BB%E5%8A%A0%E5%88%B0library-path%E4%B8%AD"><span class="toc-text">在进行交叉编译时，仍需要指定参数“-I”，或者可以将头文件直接添加到library path中</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -512,13 +512,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="通过sshfs将arm的root环境映射到编译主机上"><a href="#通过sshfs将arm的root环境映射到编译主机上" class="headerlink" title="通过sshfs将arm的root环境映射到编译主机上"></a>通过sshfs将arm的root环境映射到编译主机上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs linaro@192.168.1.181:/ /home/houzhj/space/rkroot</span><br></pre></td></tr></table></figure>
-
-<h3 id="映射成功之后，在交叉编译时，添加sysroot，来改变动态库搜索路径"><a href="#映射成功之后，在交叉编译时，添加sysroot，来改变动态库搜索路径" class="headerlink" title="映射成功之后，在交叉编译时，添加sysroot，来改变动态库搜索路径"></a>映射成功之后，在交叉编译时，添加sysroot，来改变动态库搜索路径</h3><h3 id="可以通过以下命令来查看更改后，动态库的搜索路径"><a href="#可以通过以下命令来查看更改后，动态库的搜索路径" class="headerlink" title="可以通过以下命令来查看更改后，动态库的搜索路径"></a>可以通过以下命令来查看更改后，动态库的搜索路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aarch64-linux-gnu-g++-10 --sysroot=/home/houzhj/space/rkroot -print-search-dirs | grep libraries | sed &#x27;s/libraries: =//g&#x27; | tr &#x27;:&#x27; &#x27;\n&#x27; | xargs readlink -f</span><br></pre></td></tr></table></figure>
-
-<h3 id="在进行交叉编译时，仍需要指定参数“-I”，或者可以将头文件直接添加到library-path中"><a href="#在进行交叉编译时，仍需要指定参数“-I”，或者可以将头文件直接添加到library-path中" class="headerlink" title="在进行交叉编译时，仍需要指定参数“-I”，或者可以将头文件直接添加到library path中"></a>在进行交叉编译时，仍需要指定参数“-I”，或者可以将头文件直接添加到library path中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aarch64-linux-gnu-g++-10 vsyncworker.cpp --sysroot=/home/houzhj/space/rkroot -I/home/houzhj/space/rkroot/usr/include/libdrm -ldrm</span><br></pre></td></tr></table></figure>
-
-<p>具体可参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e5fa337ca3e3">交叉编译ARM 32位或者64位</a></p>
+        <p>run fuchsia:<br><code>fx vdl start</code></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 houzhj58@163.com </span>
