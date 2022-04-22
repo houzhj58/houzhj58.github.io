@@ -474,7 +474,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-04-20 21:09:00'>2022-04-16 16:07</time>
+            Created At : <time class="date" title='Updated At: 2022-04-22 17:31:46'>2022-04-16 16:07</time>
         
     </div>
     <div class="article-meta">
@@ -513,10 +513,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>run fuchsia:<br><code>fx vdl start</code></p>
-<p><a target="_blank" rel="noopener" href="https://chowdera.com/2022/01/202201111250249898.html">https://chowdera.com/2022/01/202201111250249898.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1239243602670325760">https://www.zhihu.com/column/c_1239243602670325760</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.freesion.com/article/91271037349/">https://www.freesion.com/article/91271037349/</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/HaoBBNuanMM/article/details/86759453">https://blog.csdn.net/HaoBBNuanMM/article/details/86759453</a></p>
+<p><a target="_blank" rel="noopener" href="https://chowdera.com/2022/01/202201111250249898.html">【架构分析】Fuchsia Loop消息处理详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1239243602670325760">操作系统fuchsia学习笔记</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freesion.com/article/91271037349/">FUCHSIA OS中的RPC机制-FIDL</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/HaoBBNuanMM/article/details/86759453">【架构分析】Fuchsia FIDL IPC 详解</a></p>
+<p>This document describes the steps that occur when a component attempts to connect to a protocol in its namespace.</p>
+<p>These steps apply to the Components v2 model as run under component manager. Portions of it also apply to the Components v1 model as run under appmgr.</p>
+<p>At a high level these steps are:</p>
+<p>Component manager will construct a component’s namespace based on the use declarations in its manifest.<br>Once running, a component will attempt to open a protocol in its namespace.<br>This Open request is received by component manager, which performs the capability routing necessary to find the component providing the protocol.<br>Component manager binds to the component providing the protocol and connects the Open request to it</p>
+<p><a target="_blank" rel="noopener" href="https://fuchsia.dev/fuchsia-src/concepts/components/v2/capabilities/life_of_a_protocol_open">this link</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 houzhj58@163.com </span>
